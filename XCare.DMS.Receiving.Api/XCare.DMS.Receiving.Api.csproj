@@ -7,7 +7,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{83A31FDF-72F6-48DF-B4C7-4B167BA04813}</ProjectGuid>
+    <ProjectGuid>{545E77F0-0BA1-4CDC-BAB5-E1EFDE4AD75B}</ProjectGuid>
     <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -108,6 +108,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\BrxzController.cs" />
+    <Compile Include="Controllers\BryzxxController.cs" />
+    <Compile Include="Controllers\BrzdController.cs" />
+    <Compile Include="Controllers\GyzdController.cs" />
+    <Compile Include="Controllers\JbbmController.cs" />
+    <Compile Include="Controllers\JbxxController.cs" />
+    <Compile Include="Controllers\JcbgController.cs" />
+    <Compile Include="Controllers\JybgController.cs" />
+    <Compile Include="Controllers\TwdController.cs" />
+    <Compile Include="Controllers\YpController.cs" />
+    <Compile Include="Controllers\YpyfController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -129,7 +140,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

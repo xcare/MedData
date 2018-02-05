@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace XCare.DMS.Entity
 {
@@ -19,6 +20,7 @@ namespace XCare.DMS.Entity
         public string Sfzh { get; set; }
         public string Xx { get; set; }
         public string Ysqk { get; set; }
+        public DateTime Ryrq { get; set; }
         public DateTime? Cyrq { get; set; }
         public byte Ywgm { get; set; }
     }

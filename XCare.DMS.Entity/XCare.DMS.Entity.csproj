@@ -40,9 +40,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="YdhlBrxz.cs" />
     <Compile Include="YdhlBryzxx.cs" />
     <Compile Include="YdhlBrzd.cs" />
     <Compile Include="YdhlGyzd.cs" />
+    <Compile Include="YdhlJbbm.cs" />
     <Compile Include="YdhlJbxx.cs" />
     <Compile Include="YdhlJcbg.cs" />
     <Compile Include="YdhlJybg.cs" />

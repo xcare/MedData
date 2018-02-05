@@ -30,22 +30,107 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Bogus, Version=22.0.2.0, Culture=neutral, PublicKeyToken=fa1bb3f3f218129a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bogus.22.0.2\lib\net40\Bogus.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.2\lib\net451\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="unirest-net, Version=1.0.1.27, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unirest-APIMATIC.1.0.1.27\lib\net45\unirest-net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\YdhlJbbmDao.cs" />
+    <Compile Include="Data\YdhlJbxxDao.cs" />
+    <Compile Include="Data\YdhlBryzxxDao.cs" />
+    <Compile Include="Data\YdhlBrzdDao.cs" />
+    <Compile Include="Data\YdhlJcbgDao.cs" />
+    <Compile Include="Data\YdhlJybgDao.cs" />
+    <Compile Include="Data\YdhlTwdDao.cs" />
+    <Compile Include="Data\YdhlYpyfDao.cs" />
+    <Compile Include="Data\YdhlYpzdDao.cs" />
+    <Compile Include="Events\Brxz\BrxzCreatedEvent.cs" />
+    <Compile Include="Events\Brxz\BrxzCreatedEventHandler.cs" />
+    <Compile Include="Events\Brxz\BrxzUpdatedEvent.cs" />
+    <Compile Include="Events\Brxz\BrxzUpdatedEventHandler.cs" />
+    <Compile Include="Events\Jbbm\JbbmCreatedEvent.cs" />
+    <Compile Include="Events\Jbbm\JbbmCreatedEventHandler.cs" />
+    <Compile Include="Events\Jbbm\JbbmUpdatedEvent.cs" />
+    <Compile Include="Events\Jbbm\JbbmUpdatedEventHandler.cs" />
+    <Compile Include="Events\Ypyf\YpyfCreatedEvent.cs" />
+    <Compile Include="Events\Ypyf\YpyfCreatedEventHandler.cs" />
+    <Compile Include="Events\Ypzd\YpzdCreatedEvent.cs" />
+    <Compile Include="Events\Ypzd\YpzdCreatedEventHandler.cs" />
+    <Compile Include="Utils\DbUtil.cs" />
+    <Compile Include="Events\Bryz\BryzxxCreatedEventHandler.cs" />
+    <Compile Include="Events\Bryz\BryzxxUpdatedEventHandler.cs" />
+    <Compile Include="Events\Bryz\BryzxxCreatedEvent.cs" />
+    <Compile Include="Events\Bryz\BryzxxUpdatedEvent.cs" />
+    <Compile Include="Events\Brzd\BrzdCreatedEvent.cs" />
+    <Compile Include="Events\Brzd\BrzdCreatedEventHandler.cs" />
+    <Compile Include="Events\Brzd\BrzdUpdatedEvent.cs" />
+    <Compile Include="Events\Brzd\BrzdUpdatedEventHandler.cs" />
+    <Compile Include="Events\Gyzd\GyzdUpdatedEvent.cs" />
+    <Compile Include="Events\Gyzd\GyzdUpdatedEventHandler.cs" />
+    <Compile Include="Events\Jbxx\JbxxCreatedEvent.cs" />
+    <Compile Include="Events\Jbxx\JbxxCreatedEventHandler.cs" />
+    <Compile Include="Events\Jbxx\JbxxUpdatedEvent.cs" />
+    <Compile Include="Events\Jbxx\JbxxUpdatedEventHandler.cs" />
+    <Compile Include="Events\Jcbg\JcbgCreatedEvent.cs" />
+    <Compile Include="Events\Jcbg\JcbgCreatedEventHandler.cs" />
+    <Compile Include="Events\Jcbg\JcbgUpdatedEvent.cs" />
+    <Compile Include="Events\Jcbg\JcbgUpdatedEventHandler.cs" />
+    <Compile Include="Events\Jybg\JybgCreatedEvent.cs" />
+    <Compile Include="Events\Jybg\JybgCreatedEventHandler.cs" />
+    <Compile Include="Events\Jybg\JybgUpdatedEvent.cs" />
+    <Compile Include="Events\Jybg\JybgUpdatedEventHandler.cs" />
+    <Compile Include="Events\Twd\TwdCreatedEvent.cs" />
+    <Compile Include="Events\Twd\TwdCreatedEventHandler.cs" />
+    <Compile Include="Events\Twd\TwdUpdatedEvent.cs" />
+    <Compile Include="Events\Twd\TwdUpdatedEventHandler.cs" />
+    <Compile Include="Events\Ypyf\YpyfUpdatedEvent.cs" />
+    <Compile Include="Events\Ypyf\YpyfUpdatedEventHandler.cs" />
+    <Compile Include="Events\Ypzd\YpzdUpdatedEvent.cs" />
+    <Compile Include="Events\Ypzd\YpzdUpdatedEventHandler.cs" />
+    <Compile Include="Data\Mock\YdhlBryzxxMock.cs" />
+    <Compile Include="Data\Mock\YdhlBrzdMock.cs" />
+    <Compile Include="Data\Mock\YdhlJbxxMock.cs" />
+    <Compile Include="Data\Mock\YdhlJcbgMock.cs" />
+    <Compile Include="Data\Mock\YdhlJybgMock.cs" />
+    <Compile Include="Data\Mock\YdhlTwdMock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Application\" />
-    <Folder Include="EventHandler\" />
-    <Folder Include="Event\" />
-    <Folder Include="Mock\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XCare.DMS.Entity\XCare.DMS.Entity.csproj">
+      <Project>{ea158215-a793-4a72-99af-d450b0cacdf9}</Project>
+      <Name>XCare.DMS.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XCare.DMS.Utilities\XCare.DMS.Utilities.csproj">
+      <Project>{61a6bb8a-d605-411d-b274-46e170020397}</Project>
+      <Name>XCare.DMS.Utilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
