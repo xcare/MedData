@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Brxz\BrxzCreatedMessageHandler.cs" />
+    <Compile Include="Brxz\BrxzUpdatedMessageHandler.cs" />
     <Compile Include="Bryzxx\BryzxxUpdatedMessageHandler.cs" />
     <Compile Include="Brzd\BrzdUpdatedMessageHandler.cs" />
     <Compile Include="Gyzd\GyzdUpdatedMessageHandler.cs" />

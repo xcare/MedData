@@ -39,7 +39,7 @@ namespace XCare.DMS.Test
         [TestMethod]
         public void TestFakeTwd()
         {
-            using (var conn = new SqlConnection(@"Data Source=.\SQL2K8R2;Initial Catalog=Test;Persist Security Info=True;User ID=sa;Password=123"))
+            using (var conn = new SqlConnection(@"Data Source=.\SQL2K8R2;Initial Catalog=Test;Persist Security Info=True;User ID=sa;Password=123;Application Name=xcare"))
             {
                 try
                 {
