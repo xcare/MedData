@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F200418E-7028-4D26-9369-3CAC986EA2AC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>XCare.DMS.DataProc.MessageHandler</RootNamespace>
+    <AssemblyName>XCare.DMS.DataProc.MessageHandler</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dapper, Version=1.50.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.1.50.2\lib\net451\Dapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Bryzxx\BryzxxUpdatedMessageHandler.cs" />
+    <Compile Include="Brzd\BrzdUpdatedMessageHandler.cs" />
+    <Compile Include="Gyzd\GyzdUpdatedMessageHandler.cs" />
+    <Compile Include="IMessageHandler.cs" />
+    <Compile Include="Jbbm\JbbmCreatedMessageHandler.cs" />
+    <Compile Include="Jbbm\JbbmUpdatedMessageHandler.cs" />
+    <Compile Include="Jbxx\JbxxUpdatedMessageHandler.cs" />
+    <Compile Include="Jcbg\JcbgUpdatedMessageHandler.cs" />
+    <Compile Include="Jybg\JybgUpdatedMessageHandler.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Bryzxx\BryzxxCreatedMessageHandler.cs" />
+    <Compile Include="Brzd\BrzdCreatedMessageHandler.cs" />
+    <Compile Include="Gyzd\GyzdCreatedMessageHandler.cs" />
+    <Compile Include="Jbxx\JbxxCreatedMessageHandler.cs" />
+    <Compile Include="Jcbg\JcbgCreatedMessageHandler.cs" />
+    <Compile Include="Jybg\JybgCreatedMessageHandler.cs" />
+    <Compile Include="Twd\TwdCreatedMessageHandler.cs" />
+    <Compile Include="Twd\TwdUpdatedMessageHandler.cs" />
+    <Compile Include="Ypyf\YpyfCreatedMessageHandler.cs" />
+    <Compile Include="Ypyf\YpyfUpdatedMessageHandler.cs" />
+    <Compile Include="Ypzd\YpzdCreatedMessageHandler.cs" />
+    <Compile Include="Ypzd\YpzdUpdatedMessageHandler.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XCare.DMS.Message\XCare.DMS.Message.csproj">
+      <Project>{c2659157-ebe2-4796-9422-766a3f89b0a1}</Project>
+      <Name>XCare.DMS.Message</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

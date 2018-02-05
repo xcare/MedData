@@ -1,0 +1,15 @@
+﻿using System;
+using System.Threading.Tasks;
+using MassTransit;
+using XCare.DMS.Message.Jcbg;
+
+namespace XCare.DMS.Message.Configuration.Jcbg
+{
+    internal class JcbgUpdatedMessageConsumer : IConsumer<JcbgUpdatedMessage>
+    {
+        public Task Consume(ConsumeContext<JcbgUpdatedMessage> context)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}
