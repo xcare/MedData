@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using XCare.DMS.DataProc.Daemon;
 
 namespace XCare.DMS.DataProc.Host
 {
@@ -15,6 +16,10 @@ namespace XCare.DMS.DataProc.Host
         public FrmMain()
         {
             InitializeComponent();
+            Load += (sender, e) =>
+            {
+                DaemonService.Start();
+            };
         }
     }
 }

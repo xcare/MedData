@@ -32,6 +32,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Common.Logging, Version=3.3.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.3.3.1\lib\net40\Common.Logging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Common.Logging.Core, Version=3.3.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.Core.3.3.1\lib\net40\Common.Logging.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Common.Logging.Log4Net.Universal, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.Log4Net.Universal.1.2.0\lib\net461\Common.Logging.Log4Net.Universal.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -64,6 +80,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -73,9 +92,52 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="quartz.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XCare.DMS.DataProc.Daemon\XCare.DMS.DataProc.Daemon.csproj">
+      <Project>{eac25422-69c6-47e0-90a2-b0bf1070a270}</Project>
+      <Name>XCare.DMS.DataProc.Daemon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XCare.DMS.DataProc.EventHandler\XCare.DMS.DataProc.EventHandler.csproj">
+      <Project>{4f8acddb-1bd6-448a-80f8-dce1fa89d575}</Project>
+      <Name>XCare.DMS.DataProc.EventHandler</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XCare.DMS.DataProc.Event\XCare.DMS.DataProc.Event.csproj">
+      <Project>{1c1b4a4d-a48a-4cca-ab29-be568e5e37db}</Project>
+      <Name>XCare.DMS.DataProc.Event</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XCare.DMS.DataProc.MessageHandler\XCare.DMS.DataProc.MessageHandler.csproj">
+      <Project>{f200418e-7028-4d26-9369-3cac986ea2ac}</Project>
+      <Name>XCare.DMS.DataProc.MessageHandler</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XCare.DMS.DataProc\XCare.DMS.DataProc.csproj">
+      <Project>{370ae57e-ea93-4b99-aaf7-7b1d3b343cde}</Project>
+      <Name>XCare.DMS.DataProc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XCare.DMS.Entity\XCare.DMS.Entity.csproj">
+      <Project>{ea158215-a793-4a72-99af-d450b0cacdf9}</Project>
+      <Name>XCare.DMS.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XCare.DMS.Message.Configuration\XCare.DMS.Message.Configuration.csproj">
+      <Project>{ed78164e-607e-4c34-9957-4e02cab76f07}</Project>
+      <Name>XCare.DMS.Message.Configuration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XCare.DMS.Message\XCare.DMS.Message.csproj">
+      <Project>{c2659157-ebe2-4796-9422-766a3f89b0a1}</Project>
+      <Name>XCare.DMS.Message</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XCare.DMS.Utilities\XCare.DMS.Utilities.csproj">
+      <Project>{61a6bb8a-d605-411d-b274-46e170020397}</Project>
+      <Name>XCare.DMS.Utilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

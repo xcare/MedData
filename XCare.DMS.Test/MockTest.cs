@@ -39,25 +39,8 @@ namespace XCare.DMS.Test
         [TestMethod]
         public void TestFakeTwd()
         {
-            using (var conn = new SqlConnection(@"Data Source=.\SQL2K8R2;Initial Catalog=Test;Persist Security Info=True;User ID=sa;Password=123;Application Name=xcare"))
-            {
-                try
-                {
-                  var obj=  conn.ExecuteScalar<string>(@"
-INSERT  INTO dbo.Book ( Id, Name, Price, Author, Subject )
-VALUES  ( NEWID(), -- Id - uniqueidentifier
-          @_name, -- Name - nvarchar(50)
-          @_price, -- Price - money
-          @_author, -- Author - nvarchar(50)
-          NULL  -- Subject - nvarchar(50)
-          )", new {_name = "开发艺术AA", _price = 18, _author = "大A"});
-                    Console.WriteLine(obj);
-                }
-                catch (Exception e)
-                {
-                    throw e.InnerException;
-                }
-            }
+            var twds = YdhlTwdMock.Mock();
+            Console.WriteLine(twds);
         }
 
         [TestMethod]

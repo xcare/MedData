@@ -39,7 +39,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataCreatedEventHandler.cs" />
+    <Compile Include="DataDeletedEventHandler.cs" />
+    <Compile Include="DataIllegalCreatedEventHandler.cs" />
+    <Compile Include="DataIllegalDeletedEventHandler.cs" />
+    <Compile Include="DataIllegalUpdatedEventHandler.cs" />
+    <Compile Include="DataUpdatedEventHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XCare.DMS.DataProc.Event\XCare.DMS.DataProc.Event.csproj">
+      <Project>{1c1b4a4d-a48a-4cca-ab29-be568e5e37db}</Project>
+      <Name>XCare.DMS.DataProc.Event</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XCare.DMS.Entity\XCare.DMS.Entity.csproj">
+      <Project>{ea158215-a793-4a72-99af-d450b0cacdf9}</Project>
+      <Name>XCare.DMS.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XCare.DMS.Utilities\XCare.DMS.Utilities.csproj">
+      <Project>{61a6bb8a-d605-411d-b274-46e170020397}</Project>
+      <Name>XCare.DMS.Utilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

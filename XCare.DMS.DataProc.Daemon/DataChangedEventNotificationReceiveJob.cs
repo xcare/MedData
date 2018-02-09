@@ -45,6 +45,8 @@ namespace XCare.DMS.DataProc.Daemon
                         trans.Commit();
                     }
                 }
+
+             
             }
         }
 
@@ -58,7 +60,7 @@ namespace XCare.DMS.DataProc.Daemon
                 notification.Action = (DataManipulationOption)
                     Enum.Parse(DataManipulationOptionType, umsg.Element("action").TryGetValue());
                 notification.ActionTime = DateTime.Parse(umsg.Element("actionTime").TryGetValue());
-                notification.ObjectId = umsg.Element("actionTime").TryGetValue();
+                notification.ObjectId = umsg.Element("objectId").TryGetValue();
                 notification.TableName = umsg.Element("table").TryGetValue();
             }
             return notification;
