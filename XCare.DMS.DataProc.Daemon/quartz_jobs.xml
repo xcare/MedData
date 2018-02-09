@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<job-scheduling-data xmlns="http://quartznet.sourceforge.net/JobSchedulingData"
+                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                     version="2.0">
+  <processing-directives>
+    <overwrite-existing-data>true</overwrite-existing-data>
+  </processing-directives>
+  <schedule>
+    <job>
+      <name>dcenr</name>
+      <group>dce</group>
+      <description>data changed event notification</description>
+      <job-type>XCare.DMS.DataProc.Daemon.DataChangedEventNotificationReceiveJob, XCare.DMS.DataProc.Daemon</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
+    </job>
+    <trigger>
+      <simple>
+        <name>dceTrigger</name>
+        <group>dceGroup</group>
+        <description>data changed event notification</description>
+        <job-name>dcenr</job-name>
+        <job-group>dce</job-group>
+        <misfire-instruction>SmartPolicy</misfire-instruction>
+        <repeat-count>-1</repeat-count>
+        <repeat-interval>2000</repeat-interval>
+      </simple>
+    </trigger>
+  </schedule>
+</job-scheduling-data>
