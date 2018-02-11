@@ -23,7 +23,7 @@ namespace XCare.DMS.DataProc.Daemon
 
         private static readonly ILog DmlMsgLog = LogManager.GetLogger("DMLMsgLogger");
         private static readonly ILog ErrorLog = LogManager.GetLogger("ErrorLogger");
-        
+
         public void Execute(IJobExecutionContext context)
         {
             using (var conn = new SqlConnection(XCareConnectionString))
@@ -32,28 +32,33 @@ namespace XCare.DMS.DataProc.Daemon
                     conn.Open();
                 using (var trans = conn.BeginTransaction())
                 {
-                    var messages = TryReceiveMessage(trans);
+                    var messages = Receive(trans);
                     if (messages.Any())
                     {
-                        foreach (var message in messages)
-                        {
-                            try
-                            {
-                                DataChangedEventNotificationDistributor.Distribute(ResolveNotification(message));
-                                DmlMsgLog.Info(Encoding.Unicode.GetString(message.Body));
-                            }
-                            catch (Exception e)
-                            {
-                                ErrorLog.Error("分发DML消息失败", e);
-                            }
-                        }
+                        Distribute(messages);
                     }
                     trans.Commit();
                 }
             }
         }
 
-        private static List<Message> TryReceiveMessage(SqlTransaction trans)
+        private static void Distribute(IEnumerable<Message> messages)
+        {
+            foreach (var message in messages)
+            {
+                try
+                {
+                    DataChangedEventNotificationDistributor.Distribute(Deserialize(message));
+                    DmlMsgLog.Info(Encoding.Unicode.GetString(message.Body));
+                }
+                catch (Exception e)
+                {
+                    ErrorLog.Error("分发DML消息失败", e);
+                }
+            }
+        }
+
+        private static List<Message> Receive(IDbTransaction trans)
         {
             List<Message> messages = null;
             try
@@ -68,7 +73,7 @@ namespace XCare.DMS.DataProc.Daemon
             return messages;
         }
 
-        public static DataChangedEventNotification ResolveNotification(Message message)
+        public static DataChangedEventNotification Deserialize(Message message)
         {
             var notification = new DataChangedEventNotification();
             var umsg = XDocument.Load(message.BodyStream).Descendants("umsg").First();
