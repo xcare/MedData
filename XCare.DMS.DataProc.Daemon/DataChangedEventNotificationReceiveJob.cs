@@ -44,7 +44,7 @@ namespace XCare.DMS.DataProc.Daemon
                             }
                             catch (Exception e)
                             {
-                                ErrorLog.Error("消息", e);
+                                ErrorLog.Error("分发DML消息失败", e);
                             }
                             trans.Commit();
                         }
