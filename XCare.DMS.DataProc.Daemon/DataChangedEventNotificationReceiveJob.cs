@@ -46,9 +46,9 @@ namespace XCare.DMS.DataProc.Daemon
                             {
                                 ErrorLog.Error("分发DML消息失败", e);
                             }
-                            trans.Commit();
                         }
                     }
+                    trans.Commit();
                 }
             }
         }
@@ -65,7 +65,6 @@ namespace XCare.DMS.DataProc.Daemon
             {
                 ErrorLog.Error("接收DML事件通知失败", e);
             }
-            trans.Commit();
             return messages;
         }
 
