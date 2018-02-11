@@ -8,12 +8,16 @@ using XCare.DMS.Uploading.Utils;
 
 namespace XCare.DMS.Uploading.Data
 {
-    class YdhlYpzdDao
+    internal class YdhlGyzdDao
     {
-        public static List<string> LoadYpmcs()
+        public static List<string> GetZdlbs()
         {
             using (var conn = DbUtil.GetDbConnection())
-                return conn.Query<string>(@"SELECT DISTINCT YPMC FROM dbo.YDHL_YPZD").AsList();
+                return conn.Query<string>(@"
+SELECT  DMMC
+FROM    dbo.YDHL_GYZD
+WHERE   DMLB = 22
+        AND DMSB <> 0 AND DMSB<>1").AsList();
         }
     }
 }

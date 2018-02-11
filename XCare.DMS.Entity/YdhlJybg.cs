@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace XCare.DMS.Entity
 {
@@ -12,5 +13,6 @@ namespace XCare.DMS.Entity
         public DateTime DateTest { get; set; }
         public long Rowid { get; set; }
         public string Jcmd { get; set; }
+        public virtual List<YdhlJybgxq> Items { get; set; }
     }
 }

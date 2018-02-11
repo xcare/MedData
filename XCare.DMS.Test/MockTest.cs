@@ -39,14 +39,14 @@ namespace XCare.DMS.Test
         [TestMethod]
         public void TestFakeTwd()
         {
-            var twds = YdhlTwdMock.Mock();
+            var twds = YdhlTwdMock.Mock(long.MinValue);
             Console.WriteLine(twds);
         }
 
         [TestMethod]
         public void TestFakeJbxx()
         {
-            var jbxxes = YdhlJbxxMock.GetFaker().Generate(20);
+            var jbxxes = YdhlJbxxMock.Mock(20);
             Console.WriteLine(JsonConvert.SerializeObject(jbxxes));
         }
     }

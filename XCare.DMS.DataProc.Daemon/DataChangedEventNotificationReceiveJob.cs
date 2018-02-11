@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Text;
 using System.Xml.Linq;
+using log4net;
 using Quartz;
 using ServiceBroker.Net;
 using XCare.DMS.DataProc.Daemon.Extension;
@@ -18,6 +21,9 @@ namespace XCare.DMS.DataProc.Daemon
         private static readonly string XCareConnectionString =
             ConfigurationManager.ConnectionStrings["XCareConnectionString"].ConnectionString;
 
+        private static readonly ILog DmlMsgLog = LogManager.GetLogger("DMLMsgLogger");
+        private static readonly ILog ErrorLog = LogManager.GetLogger("ErrorLogger");
+        
         public void Execute(IJobExecutionContext context)
         {
             using (var conn = new SqlConnection(XCareConnectionString))
@@ -26,28 +32,41 @@ namespace XCare.DMS.DataProc.Daemon
                     conn.Open();
                 using (var trans = conn.BeginTransaction())
                 {
-                    try
+                    var messages = TryReceiveMessage(trans);
+                    if (messages.Any())
                     {
-                        var messages =
-                            ServiceBrokerWrapper.WaitAndReceive(trans, "DataChangedEventNotificationQueue", 1000, 2000)
-                                .ToList();
-                        if (messages.Any())
+                        foreach (var message in messages)
                         {
-                            foreach (var message in messages)
+                            try
                             {
                                 DataChangedEventNotificationDistributor.Distribute(ResolveNotification(message));
+                                DmlMsgLog.Info(Encoding.Unicode.GetString(message.Body));
                             }
+                            catch (Exception e)
+                            {
+                                ErrorLog.Error("消息", e);
+                            }
+                            trans.Commit();
                         }
-                        trans.Commit();
-                    }
-                    catch (Exception)
-                    {
-                        trans.Commit();
                     }
                 }
-
-             
             }
+        }
+
+        private static List<Message> TryReceiveMessage(SqlTransaction trans)
+        {
+            List<Message> messages = null;
+            try
+            {
+                messages = ServiceBrokerWrapper.WaitAndReceive(trans, "DataChangedEventNotificationQueue", 1000, 2000)
+                    .ToList();
+            }
+            catch (Exception e)
+            {
+                ErrorLog.Error("接收DML事件通知失败", e);
+            }
+            trans.Commit();
+            return messages;
         }
 
         public static DataChangedEventNotification ResolveNotification(Message message)

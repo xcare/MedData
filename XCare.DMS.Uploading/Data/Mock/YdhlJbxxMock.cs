@@ -11,10 +11,10 @@ namespace XCare.DMS.Uploading.Data.Mock
 {
     public class YdhlJbxxMock
     {
-        public static Faker<YdhlJbxx> GetFaker()
+        public static List<YdhlJbxx> Mock(int count = 1)
         {
             var dicts = LoadGyzds();
-            var jbmcs = LoadJbmcs();
+            var jbmcs = YdhlJbbmDao.LoadJbmcs();
             return new Faker<YdhlJbxx>().StrictMode(false)
                 .RuleFor(e => e.Zyhm, f => f.Random.Int().ToString())
                 .RuleFor(e => e.Brxm, f => f.Name.FullName())
@@ -31,14 +31,14 @@ namespace XCare.DMS.Uploading.Data.Mock
                 .RuleFor(e => e.Sfzh, f => f.Person.Cpr())
                 .RuleFor(e => e.Ysqk,
                     f => f.PickRandom(dicts.Where(e => e.Dmlb == 20 && e.Dmsb != 0).Select(e => e.Dmmc)))
-                .RuleFor(e => e.Ywgm, f => f.PickRandom(new byte[] { 0, 1 }))
+                .RuleFor(e => e.Ywgm, f => f.PickRandom(new byte[] {0, 1}))
                 .RuleFor(e => e.Ryrq, f => DateTime.Now.AddSeconds(-f.Random.Int(0, 30000000)))
                 .FinishWith((f, e) =>
                 {
                     e.Brzt = dicts.First(v => v.Dmlb == 10 && v.Dmsb == e.Ryqk).Dmmc;
                     e.Xx = dicts.First(v => v.Dmlb == 21 && v.Dmsb == e.Brxx).Dmmc;
                     e.Cyrq = ResolveRyrq(e, f);
-                });
+                }).Generate(count);
         }
 
         private static DateTime? ResolveRyrq(YdhlJbxx e, Faker f)
@@ -56,14 +56,6 @@ namespace XCare.DMS.Uploading.Data.Mock
                     conn.Query<YdhlGyzd>(
                         @"SELECT * FROM dbo.YDHL_GYZD WHERE (DMLB=15 OR DMLB=10 OR DMLB=21 OR DMLB=20) AND DMSB!=0")
                         .AsList();
-            }
-        }
-
-        private static List<string> LoadJbmcs()
-        {
-            using (var conn = DbUtil.GetDbConnection())
-            {
-                return conn.Query<string>(@"SELECT NAME FROM dbo.YDHL_JBBM").AsList();
             }
         }
     }
