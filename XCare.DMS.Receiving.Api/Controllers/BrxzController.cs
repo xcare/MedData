@@ -1,37 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
+﻿using System.Web.Http;
 
 namespace XCare.DMS.Receiving.Api.Controllers
 {
+    /// <summary>
+    ///     病人性质
+    /// </summary>
     public class BrxzController : ApiController
     {
-        // GET api/brxz
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET api/brxz/5
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/brxz
-        public void Post([FromBody]string value)
+        /// <summary>
+        ///     新增病人性质
+        /// </summary>
+        /// <param name="value"></param>
+        public void Post([FromBody] string value)
         {
         }
 
-        // PUT api/brxz/5
-        public void Put(int id, [FromBody]string value)
+        /// <summary>
+        ///     修改病人性质
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="value"></param>
+        public void Put(int id, [FromBody] string value)
         {
         }
 
-        // DELETE api/brxz/5
+        /// <summary>
+        ///     删除病人性质
+        /// </summary>
+        /// <param name="id"></param>
         public void Delete(int id)
         {
         }

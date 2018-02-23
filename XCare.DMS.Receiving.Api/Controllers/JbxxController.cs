@@ -1,37 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
+﻿using System.Web.Http;
 
 namespace XCare.DMS.Receiving.Api.Controllers
 {
+    /// <summary>
+    ///     病人信息
+    /// </summary>
     public class JbxxController : ApiController
     {
-        // GET api/jbxx
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET api/jbxx/5
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/jbxx
-        public void Post([FromBody]string value)
+        /// <summary>
+        ///     新增病人
+        /// </summary>
+        /// <param name="value"></param>
+        public void Post([FromBody] string value)
         {
         }
 
-        // PUT api/jbxx/5
-        public void Put(int id, [FromBody]string value)
+        /// <summary>
+        ///     修改病人
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="value"></param>
+        public void Put(int id, [FromBody] string value)
         {
         }
 
-        // DELETE api/jbxx/5
+        /// <summary>
+        ///     删除病人
+        /// </summary>
+        /// <param name="id"></param>
         public void Delete(int id)
         {
         }

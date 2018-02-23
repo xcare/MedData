@@ -4,19 +4,18 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Xml.Linq;
+using System.Xml.Serialization;
 using log4net;
 using Quartz;
 using ServiceBroker.Net;
-using XCare.DMS.DataProc.Daemon.Extension;
 
 namespace XCare.DMS.DataProc.Daemon
 {
     [DisallowConcurrentExecution]
     internal class DataChangedEventNotificationReceiveJob : IJob
     {
-        private static readonly Type DataManipulationOptionType = typeof (DataManipulationOption);
+        private static readonly XmlSerializer MessageDeserializer =
+            new XmlSerializer(typeof (DataChangedEventNotification));
 
         private static readonly string XCareConnectionString =
             ConfigurationManager.ConnectionStrings["XCareConnectionString"].ConnectionString;
@@ -48,12 +47,15 @@ namespace XCare.DMS.DataProc.Daemon
             {
                 try
                 {
-                    DataChangedEventNotificationDistributor.Distribute(Deserialize(message));
-                    DmlMsgLog.Info(Encoding.Unicode.GetString(message.Body));
+                    var notification = Deserialize(message);
+                    DataChangedEventNotificationDistributor.Distribute(notification);
+                    if (DmlMsgLog.IsInfoEnabled)
+                        DmlMsgLog.Info(notification.ToLog());
                 }
                 catch (Exception e)
                 {
-                    ErrorLog.Error("分发DML消息失败", e);
+                    if (ErrorLog.IsErrorEnabled)
+                        ErrorLog.Error("分发DML消息失败", e);
                 }
             }
         }
@@ -68,25 +70,15 @@ namespace XCare.DMS.DataProc.Daemon
             }
             catch (Exception e)
             {
-                ErrorLog.Error("接收DML事件通知失败", e);
+                if (ErrorLog.IsErrorEnabled)
+                    ErrorLog.Error("接收DML事件通知失败", e);
             }
             return messages;
         }
 
         public static DataChangedEventNotification Deserialize(Message message)
         {
-            var notification = new DataChangedEventNotification();
-            var umsg = XDocument.Load(message.BodyStream).Descendants("umsg").First();
-            if (umsg != null)
-            {
-                notification.ApplicationName = umsg.Element("host").TryGetValue();
-                notification.Action = (DataManipulationOption)
-                    Enum.Parse(DataManipulationOptionType, umsg.Element("action").TryGetValue());
-                notification.ActionTime = DateTime.Parse(umsg.Element("actionTime").TryGetValue());
-                notification.ObjectId = umsg.Element("objectId").TryGetValue();
-                notification.TableName = umsg.Element("table").TryGetValue();
-            }
-            return notification;
+            return (DataChangedEventNotification) MessageDeserializer.Deserialize(message.BodyStream);
         }
     }
 }
