@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using MassTransit;
+using XCare.DMS.DataProc.MessageHandler.Jcbg;
 using XCare.DMS.Message.Jcbg;
 
 namespace XCare.DMS.Message.Configuration.Jcbg
@@ -9,7 +10,7 @@ namespace XCare.DMS.Message.Configuration.Jcbg
     {
         public Task Consume(ConsumeContext<JcbgCreatedMessage> context)
         {
-            throw new NotImplementedException();
+            return MessageHandlerHandler.Handle(new JcbgCreatedMessageHandler(), context);
         }
     }
 }

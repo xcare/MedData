@@ -1,12 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using XCare.DMS.Entity;
 
 namespace XCare.DMS.Message.Jbbm
 {
-   public class JbbmCreatedMessage
+    public class JbbmCreatedMessage
     {
+        public JbbmCreatedMessage()
+        {
+        }
+
+        public JbbmCreatedMessage(YdhlJbbm jbbm)
+        {
+            Jbbm = jbbm;
+        }
+
+        public YdhlJbbm Jbbm { get; set; }
     }
 }

@@ -1,4 +1,10 @@
-﻿using System.Web.Http;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web.Http;
+using Nelibur.ObjectMapper;
+using XCare.DMS.Entity;
+using XCare.DMS.Receiving.DTO;
 
 namespace XCare.DMS.Receiving.Api.Controllers
 {
@@ -7,12 +13,33 @@ namespace XCare.DMS.Receiving.Api.Controllers
     /// </summary>
     public class JybgController : ApiController
     {
+        private readonly JybgService _jybgService = new JybgService();
+
+        static JybgController()
+        {
+            TinyMapper.Bind<JybgxqCreateionDTO, YdhlJybgxq>();
+            TinyMapper.Bind<JybgCreationDTO, YdhlJybg>();
+        }
+
         /// <summary>
         ///     新增检验报告
         /// </summary>
-        /// <param name="value"></param>
-        public void Post([FromBody] string value)
+        /// <param name="dtos"></param>
+        public void Post(IEnumerable<JybgCreationDTO> dtos)
         {
+            var objs = dtos.Select(e =>
+            {
+                var obj = TinyMapper.Map<YdhlJybg>(e);
+                obj.Id = Guid.NewGuid();
+                obj.Items = e.Items.Select(item =>
+                {
+                    var itemObj = TinyMapper.Map<YdhlJybgxq>(item);
+                    itemObj.Id = Guid.NewGuid();
+                    return itemObj;
+                }).ToList();
+                return obj;
+            });
+            _jybgService.Create(objs);
         }
 
         /// <summary>

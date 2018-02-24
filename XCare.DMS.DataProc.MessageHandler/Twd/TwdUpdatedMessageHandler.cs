@@ -1,6 +1,12 @@
-﻿namespace XCare.DMS.DataProc.MessageHandler.Twd
+﻿using XCare.DMS.Message.Twd;
+
+namespace XCare.DMS.DataProc.MessageHandler.Twd
 {
-    class TwdUpdatedMessageHandler
-    {
-    }
+   public class TwdUpdatedMessageHandler:IMessageHandler<TwdUpdatedMessage>
+   {
+       public bool Handle(TwdUpdatedMessage message)
+       {
+           throw new System.NotImplementedException();
+       }
+   }
 }

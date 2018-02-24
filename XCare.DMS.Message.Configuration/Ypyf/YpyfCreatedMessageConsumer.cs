@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using MassTransit;
+using XCare.DMS.DataProc.MessageHandler.Ypyf;
 using XCare.DMS.Message.Ypyf;
 
 namespace XCare.DMS.Message.Configuration.Ypyf
@@ -9,7 +10,7 @@ namespace XCare.DMS.Message.Configuration.Ypyf
     {
         public Task Consume(ConsumeContext<YpyfCreatedMessage> context)
         {
-            throw new NotImplementedException();
+            return MessageHandlerHandler.Handle(new YpyfCreatedMessageHandler(), context);
         }
     }
 }

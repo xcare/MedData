@@ -35,6 +35,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -63,6 +64,7 @@
     <Compile Include="Jybg\JybgCreatedMessageHandler.cs" />
     <Compile Include="Twd\TwdCreatedMessageHandler.cs" />
     <Compile Include="Twd\TwdUpdatedMessageHandler.cs" />
+    <Compile Include="DbUtil.cs" />
     <Compile Include="Ypyf\YpyfCreatedMessageHandler.cs" />
     <Compile Include="Ypyf\YpyfUpdatedMessageHandler.cs" />
     <Compile Include="Ypzd\YpzdCreatedMessageHandler.cs" />
@@ -72,11 +74,16 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\XCare.DMS.Entity\XCare.DMS.Entity.csproj">
+      <Project>{ea158215-a793-4a72-99af-d450b0cacdf9}</Project>
+      <Name>XCare.DMS.Entity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\XCare.DMS.Message\XCare.DMS.Message.csproj">
       <Project>{c2659157-ebe2-4796-9422-766a3f89b0a1}</Project>
       <Name>XCare.DMS.Message</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,6 +1,12 @@
-﻿namespace XCare.DMS.DataProc.MessageHandler.Ypyf
+﻿using XCare.DMS.Message.Ypyf;
+
+namespace XCare.DMS.DataProc.MessageHandler.Ypyf
 {
-    class YpyfUpdatedMessageHandler
-    {
-    }
+   public class YpyfUpdatedMessageHandler:IMessageHandler<YpyfUpdatedMessage>
+   {
+       public bool Handle(YpyfUpdatedMessage message)
+       {
+           throw new System.NotImplementedException();
+       }
+   }
 }

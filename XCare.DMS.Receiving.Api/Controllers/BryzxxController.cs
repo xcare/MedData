@@ -1,4 +1,9 @@
-﻿using System.Web.Http;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Web.Http;
+using Nelibur.ObjectMapper;
+using XCare.DMS.Entity;
+using XCare.DMS.Receiving.DTO;
 
 namespace XCare.DMS.Receiving.Api.Controllers
 {
@@ -7,12 +12,19 @@ namespace XCare.DMS.Receiving.Api.Controllers
     /// </summary>
     public class BryzxxController : ApiController
     {
+        private readonly BryzxxService _bryzxxService = new BryzxxService();
+        static BryzxxController()
+        {
+            TinyMapper.Bind<BryzxxCreationDTO, YdhlBryzxx>();
+        }
+
         /// <summary>
         ///     新增病人医嘱
         /// </summary>
-        /// <param name="value"></param>
-        public void Post([FromBody] string value)
+        /// <param name="dtos"></param>
+        public void Post(IEnumerable<BryzxxCreationDTO> dtos )
         {
+            _bryzxxService.Create(dtos.Select(TinyMapper.Map<YdhlBryzxx>));
         }
 
         /// <summary>

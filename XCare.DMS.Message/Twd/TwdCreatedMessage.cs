@@ -5,6 +5,12 @@ namespace XCare.DMS.Message.Twd
 {
     public class TwdCreatedMessage
     {
-        public List<YdhlTwd> Twds { get; set; }
+        public TwdCreatedMessage(){}
+
+        public TwdCreatedMessage(IEnumerable<YdhlTwd> twds)
+        {
+            Twds = twds;
+        }
+        public IEnumerable<YdhlTwd> Twds { get; set; }
     }
 }

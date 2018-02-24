@@ -5,6 +5,12 @@ namespace XCare.DMS.Message.Jybg
 {
     public class JybgCreatedMessage
     {
-        public List<YdhlJybg> Jybgs { get; set; }
+        public JybgCreatedMessage(){}
+
+        public JybgCreatedMessage(IEnumerable<YdhlJybg> jybgs)
+        {
+            Jybgs = jybgs;
+        }
+        public IEnumerable<YdhlJybg> Jybgs { get; set; }
     }
 }

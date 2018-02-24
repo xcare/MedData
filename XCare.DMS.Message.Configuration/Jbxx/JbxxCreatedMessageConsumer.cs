@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
 using MassTransit;
+using XCare.DMS.DataProc.MessageHandler.Jbbm;
+using XCare.DMS.DataProc.MessageHandler.Jbxx;
 using XCare.DMS.Message.Jbxx;
 
 namespace XCare.DMS.Message.Configuration.Jbxx
@@ -9,7 +11,7 @@ namespace XCare.DMS.Message.Configuration.Jbxx
     {
         public Task Consume(ConsumeContext<JbxxCreatedMessage> context)
         {
-            throw new NotImplementedException();
+            return MessageHandlerHandler.Handle(new JbxxCreatedMessageHandler(), context);
         }
     }
 }

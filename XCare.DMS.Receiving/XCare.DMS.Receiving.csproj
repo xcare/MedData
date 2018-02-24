@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -39,7 +40,46 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BrxzService.cs" />
+    <Compile Include="BryzxxService.cs" />
+    <Compile Include="BrzdService.cs" />
+    <Compile Include="DTO\BrxzDTO.cs" />
+    <Compile Include="DTO\BryzxxDTO.cs" />
+    <Compile Include="DTO\BrzdDTO.cs" />
+    <Compile Include="DTO\GyzdDTO.cs" />
+    <Compile Include="DTO\JbbmDTO.cs" />
+    <Compile Include="DTO\JbxxDTO.cs" />
+    <Compile Include="DTO\JcbgDTO.cs" />
+    <Compile Include="DTO\JybgDTO.cs" />
+    <Compile Include="DTO\TwdDTO.cs" />
+    <Compile Include="DTO\YpyfDTO.cs" />
+    <Compile Include="DTO\YpzdDTO.cs" />
+    <Compile Include="GyzdService.cs" />
+    <Compile Include="JbbmService.cs" />
+    <Compile Include="JbxxService.cs" />
+    <Compile Include="JcbgService.cs" />
+    <Compile Include="JybgService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TwdService.cs" />
+    <Compile Include="YpyfService.cs" />
+    <Compile Include="YpzdService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XCare.DMS.Entity\XCare.DMS.Entity.csproj">
+      <Project>{ea158215-a793-4a72-99af-d450b0cacdf9}</Project>
+      <Name>XCare.DMS.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XCare.DMS.Message.Configuration\XCare.DMS.Message.Configuration.csproj">
+      <Project>{ed78164e-607e-4c34-9957-4e02cab76f07}</Project>
+      <Name>XCare.DMS.Message.Configuration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XCare.DMS.Message\XCare.DMS.Message.csproj">
+      <Project>{c2659157-ebe2-4796-9422-766a3f89b0a1}</Project>
+      <Name>XCare.DMS.Message</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

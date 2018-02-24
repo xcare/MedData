@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using MassTransit;
+using XCare.DMS.DataProc.MessageHandler.Brxz;
 using XCare.DMS.Message.Brxz;
 
 namespace XCare.DMS.Message.Configuration.Brxz
@@ -9,7 +10,7 @@ namespace XCare.DMS.Message.Configuration.Brxz
     {
         public Task Consume(ConsumeContext<BrxzCreatedMessage> context)
         {
-            throw new NotImplementedException();
+            return MessageHandlerHandler.Handle(new BrxzCreatedMessageHandler(), context);
         }
     }
 }

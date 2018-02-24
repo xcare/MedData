@@ -1,6 +1,12 @@
-﻿namespace XCare.DMS.DataProc.MessageHandler.Jbxx
+﻿using XCare.DMS.Message.Jbxx;
+
+namespace XCare.DMS.DataProc.MessageHandler.Jbxx
 {
-    class JbxxUpdatedMessageHandler
-    {
-    }
+  public  class JbxxUpdatedMessageHandler:IMessageHandler<JbxxUpdatedMessage>
+  {
+      public bool Handle(JbxxUpdatedMessage message)
+      {
+          throw new System.NotImplementedException();
+      }
+  }
 }

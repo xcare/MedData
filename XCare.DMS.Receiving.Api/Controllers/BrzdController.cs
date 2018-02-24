@@ -1,4 +1,8 @@
-﻿using System.Web.Http;
+﻿using System;
+using System.Web.Http;
+using Nelibur.ObjectMapper;
+using XCare.DMS.Entity;
+using XCare.DMS.Receiving.DTO;
 
 namespace XCare.DMS.Receiving.Api.Controllers
 {
@@ -7,12 +11,22 @@ namespace XCare.DMS.Receiving.Api.Controllers
     /// </summary>
     public class BrzdController : ApiController
     {
+        private readonly BrzdService _brzdService = new BrzdService();
+
+        private BrzdController()
+        {
+            TinyMapper.Bind<BrzdCreationDTO, YdhlBrzd>();
+        }
+
         /// <summary>
         ///     新增病人诊断
         /// </summary>
-        /// <param name="value"></param>
-        public void Post([FromBody] string value)
+        /// <param name="dto"></param>
+        public void Post(BrzdCreationDTO dto)
         {
+            var obj = TinyMapper.Map<YdhlBrzd>(dto);
+            obj.Id = Guid.NewGuid();
+            _brzdService.Create(obj);
         }
 
         /// <summary>

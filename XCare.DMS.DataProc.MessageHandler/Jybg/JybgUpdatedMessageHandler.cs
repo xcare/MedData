@@ -1,6 +1,12 @@
-﻿namespace XCare.DMS.DataProc.MessageHandler.Jybg
+﻿using XCare.DMS.Message.Jybg;
+
+namespace XCare.DMS.DataProc.MessageHandler.Jybg
 {
-    class JybgUpdatedMessageHandler
-    {
-    }
+   public class JybgUpdatedMessageHandler:IMessageHandler<JybgUpdatedMessage>
+   {
+       public bool Handle(JybgUpdatedMessage message)
+       {
+           throw new System.NotImplementedException();
+       }
+   }
 }

@@ -1,4 +1,8 @@
-﻿using System.Web.Http;
+﻿using System;
+using System.Web.Http;
+using Nelibur.ObjectMapper;
+using XCare.DMS.Entity;
+using XCare.DMS.Receiving.DTO;
 
 namespace XCare.DMS.Receiving.Api.Controllers
 {
@@ -7,12 +11,22 @@ namespace XCare.DMS.Receiving.Api.Controllers
     /// </summary>
     public class YpyfController : ApiController
     {
+        private readonly YpyfService _ypyfService = new YpyfService();
+
+        static YpyfController()
+        {
+            TinyMapper.Bind<YpyfCreationDTO, YdhlYpyf>();
+        }
+
         /// <summary>
         ///     新增药品用法
         /// </summary>
-        /// <param name="value"></param>
-        public void Post([FromBody] string value)
+        /// <param name="dto"></param>
+        public void Post(YpyfCreationDTO dto)
         {
+            var obj = TinyMapper.Map<YdhlYpyf>(dto);
+            obj.Id = Guid.NewGuid();
+            _ypyfService.Create(obj);
         }
 
         /// <summary>

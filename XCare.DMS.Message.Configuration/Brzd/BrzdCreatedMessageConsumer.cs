@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Threading.Tasks;
 using MassTransit;
+using XCare.DMS.DataProc.MessageHandler.Brzd;
 using XCare.DMS.Message.Bryzxx;
+using XCare.DMS.Message.Brzd;
 
 namespace XCare.DMS.Message.Configuration.Brzd
 {
-    internal class BrzdCreatedMessageConsumer : IConsumer<BryzxxCreatedMessage>
+    internal class BrzdCreatedMessageConsumer : IConsumer<BrzdCreatedMessage>
     {
-        public Task Consume(ConsumeContext<BryzxxCreatedMessage> context)
+
+        public Task Consume(ConsumeContext<BrzdCreatedMessage> context)
         {
-            throw new NotImplementedException();
+            return MessageHandlerHandler.Handle(new BrzdCreatedMessageHandler(), context);
         }
     }
 }

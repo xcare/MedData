@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using MassTransit;
+using XCare.DMS.DataProc.MessageHandler.Brzd;
 using XCare.DMS.Message.Brzd;
 
 namespace XCare.DMS.Message.Configuration.Brzd
@@ -9,7 +10,7 @@ namespace XCare.DMS.Message.Configuration.Brzd
     {
         public Task Consume(ConsumeContext<BrzdUpdatedMessage> context)
         {
-            throw new NotImplementedException();
+            return MessageHandlerHandler.Handle(new BrzdUpdatedMessageHandler(), context);
         }
     }
 }

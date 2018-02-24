@@ -5,6 +5,15 @@ namespace XCare.DMS.Message.Bryzxx
 {
     public class BryzxxCreatedMessage
     {
-        public List<YdhlBryzxx> Bryzxxes { get; set; }
+        public BryzxxCreatedMessage()
+        {
+        }
+
+        public BryzxxCreatedMessage(IEnumerable<YdhlBryzxx> bryzxxes)
+        {
+            Bryzxxes = bryzxxes;
+        }
+
+        public IEnumerable<YdhlBryzxx> Bryzxxes { get; set; }
     }
 }

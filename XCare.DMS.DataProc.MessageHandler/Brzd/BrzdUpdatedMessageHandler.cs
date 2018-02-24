@@ -1,6 +1,12 @@
-﻿namespace XCare.DMS.DataProc.MessageHandler.Brzd
+﻿using XCare.DMS.Message.Brzd;
+
+namespace XCare.DMS.DataProc.MessageHandler.Brzd
 {
-    class BrzdUpdatedMessageHandler
-    {
-    }
+   public class BrzdUpdatedMessageHandler:IMessageHandler<BrzdUpdatedMessage>
+   {
+       public bool Handle(BrzdUpdatedMessage message)
+       {
+           throw new System.NotImplementedException();
+       }
+   }
 }

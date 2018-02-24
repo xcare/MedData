@@ -10,7 +10,10 @@ namespace XCare.DMS.Uploading.Utils
 
         public static IDbConnection GetDbConnection()
         {
-            return new SqlConnection(XCareHisConnectionString);
+            var connection = new SqlConnection(XCareHisConnectionString);
+            if (connection.State == ConnectionState.Closed)
+                connection.Open();
+            return connection;
         }
     }
 }

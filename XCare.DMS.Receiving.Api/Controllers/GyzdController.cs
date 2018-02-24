@@ -1,4 +1,8 @@
-﻿using System.Web.Http;
+﻿using System;
+using System.Web.Http;
+using Nelibur.ObjectMapper;
+using XCare.DMS.Entity;
+using XCare.DMS.Receiving.DTO;
 
 namespace XCare.DMS.Receiving.Api.Controllers
 {
@@ -7,12 +11,22 @@ namespace XCare.DMS.Receiving.Api.Controllers
     /// </summary>
     public class GyzdController : ApiController
     {
+        private readonly GyzdService _gyzdService=new GyzdService();
+
+        static GyzdController()
+        {
+            TinyMapper.Bind<GyzdCreationDTO, YdhlGyzd>();
+        }
+
         /// <summary>
         ///     新增公用字典
         /// </summary>
-        /// <param name="value"></param>
-        public void Post([FromBody] string value)
+        /// <param name="dto"></param>
+        public void Post(GyzdCreationDTO dto)
         {
+            var obj = TinyMapper.Map<YdhlGyzd>(dto);
+            obj.Id = Guid.NewGuid();
+            _gyzdService.Create(obj);
         }
 
         /// <summary>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using MassTransit;
+using XCare.DMS.DataProc.MessageHandler.Ypzd;
 using XCare.DMS.Message.Ypzd;
 
 namespace XCare.DMS.Message.Configuration.Ypzd
@@ -9,7 +10,7 @@ namespace XCare.DMS.Message.Configuration.Ypzd
     {
         public Task Consume(ConsumeContext<YpzdCreatedMessage> context)
         {
-            throw new NotImplementedException();
+            return MessageHandlerHandler.Handle(new YpzdCreatedMessageHandler(), context);
         }
     }
 }

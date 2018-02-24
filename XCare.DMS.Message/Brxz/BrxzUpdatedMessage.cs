@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using XCare.DMS.Entity;
 
 namespace XCare.DMS.Message.Brxz
 {
-   public class BrxzUpdatedMessage
+    public class BrxzUpdatedMessage
     {
+       
     }
 }

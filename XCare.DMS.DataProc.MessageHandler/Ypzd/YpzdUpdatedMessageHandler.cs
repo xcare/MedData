@@ -1,6 +1,12 @@
-﻿namespace XCare.DMS.DataProc.MessageHandler.Ypzd
+﻿using XCare.DMS.Message.Ypzd;
+
+namespace XCare.DMS.DataProc.MessageHandler.Ypzd
 {
-    public class YpzdUpdatedMessageHandler
+    public class YpzdUpdatedMessageHandler:IMessageHandler<YpzdUpdatedMessage>
     {
+        public bool Handle(YpzdUpdatedMessage message)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

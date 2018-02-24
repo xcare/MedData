@@ -1,12 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using XCare.DMS.Entity;
 
 namespace XCare.DMS.Message.Brxz
 {
-   public class BrxzCreatedMessage
+    public class BrxzCreatedMessage
     {
+        public BrxzCreatedMessage()
+        {
+        }
+
+        public BrxzCreatedMessage(YdhlBrxz brxz)
+        {
+            Brxz = brxz;
+        }
+
+        public YdhlBrxz Brxz { get; set; }
     }
 }

@@ -1,4 +1,7 @@
 ﻿using System.Web.Http;
+using Nelibur.ObjectMapper;
+using XCare.DMS.Entity;
+using XCare.DMS.Receiving.DTO;
 
 namespace XCare.DMS.Receiving.Api.Controllers
 {
@@ -7,12 +10,20 @@ namespace XCare.DMS.Receiving.Api.Controllers
     /// </summary>
     public class JbxxController : ApiController
     {
+        private readonly JbxxService _jbxxService = new JbxxService();
+
+        static JbxxController()
+        {
+            TinyMapper.Bind<JbxxCreationDTO, YdhlJbxx>();
+        }
+
         /// <summary>
         ///     新增病人
         /// </summary>
-        /// <param name="value"></param>
-        public void Post([FromBody] string value)
+        /// <param name="dto"></param>
+        public void Post(JbxxCreationDTO dto)
         {
+            _jbxxService.Create(TinyMapper.Map<YdhlJbxx>(dto));
         }
 
         /// <summary>

@@ -1,6 +1,12 @@
-﻿namespace XCare.DMS.DataProc.MessageHandler.Jbbm
+﻿using XCare.DMS.Message.Jbbm;
+
+namespace XCare.DMS.DataProc.MessageHandler.Jbbm
 {
-    class JbbmUpdatedMessageHandler
-    {
-    }
+   public class JbbmUpdatedMessageHandler:IMessageHandler<JbbmUpdatedMessage>
+   {
+       public bool Handle(JbbmUpdatedMessage message)
+       {
+           throw new System.NotImplementedException();
+       }
+   }
 }
